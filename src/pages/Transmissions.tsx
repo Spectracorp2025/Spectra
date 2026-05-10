@@ -185,14 +185,14 @@ export default function Transmissions() {
           </div>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/5 border border-white/10 p-6 rounded-3xl backdrop-blur-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black/40 border border-white/20 p-6 rounded-3xl backdrop-blur-xl shadow-2xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-red-500/20 rounded-2xl flex items-center justify-center text-red-500 animate-pulse">
               <Radio size={28} />
             </div>
             <div>
               <h2 className="text-2xl font-black tracking-tight uppercase">SALA DE TRANSMISIÓN</h2>
-              <p className="text-white/60 font-medium tracking-wide">No te pierdas de los mejores eventos en vivo.</p>
+              <p className="text-white/80 font-medium tracking-wide">No te pierdas de los mejores eventos en vivo.</p>
             </div>
           </div>
           {user?.is_admin && (

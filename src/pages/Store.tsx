@@ -133,9 +133,9 @@ export default function Store() {
                 placeholder="BUSCAR PRODUCTO..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-3 text-sm font-black uppercase tracking-widest placeholder:text-white/20 focus:outline-none focus:border-indigo-500/50 transition-all"
+                className="w-full bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-3 text-sm font-black uppercase tracking-widest placeholder:text-white/40 focus:outline-none focus:border-indigo-500 transition-all shadow-2xl"
               />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20">
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40">
                 <ShoppingBag size={18} />
               </div>
             </div>

@@ -85,14 +85,14 @@ export default function Forums() {
   return (
     <Layout title="Foros">
       <div className="max-w-5xl mx-auto space-y-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black/40 border border-white/20 p-6 rounded-[2rem] backdrop-blur-xl shadow-2xl">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-grow">
             <div className="w-12 h-12 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 flex-shrink-0">
               <MessageSquare size={28} />
             </div>
             <div className="flex-grow">
               <h2 className="text-2xl font-black tracking-tight uppercase">COMUNIDAD SPECTRA</h2>
-              <p className="text-white/60 font-medium tracking-wide">Comparte, debate y comenta con otros usuarios.</p>
+              <p className="text-white/80 font-medium tracking-wide">Comparte, debate y comenta con otros usuarios.</p>
             </div>
             <div className="relative group min-w-[280px]">
               <input 
@@ -100,7 +100,7 @@ export default function Forums() {
                 placeholder="BUSCAR TEMA..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-3 text-sm font-black uppercase tracking-widest placeholder:text-white/20 focus:outline-none focus:border-indigo-500/50 transition-all"
+                className="w-full bg-white/10 border border-white/20 rounded-2xl px-6 py-3 text-sm font-black uppercase tracking-widest placeholder:text-white/40 focus:outline-none focus:border-indigo-500 transition-all shadow-lg"
               />
             </div>
           </div>
