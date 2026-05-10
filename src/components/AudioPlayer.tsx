@@ -10,15 +10,24 @@ export default function AudioPlayer() {
       if (audioRef.current && !isPlaying) {
         audioRef.current.play().then(() => {
             setIsPlaying(true);
-        }).catch(err => console.log("Audio play blocked:", err));
+        }).catch(err => {
+          console.log("Audio play blocked, waiting for more interaction:", err);
+        });
       }
     };
 
+    // Try to play immediately (might be blocked)
+    handleFirstInteraction();
+
     window.addEventListener('click', handleFirstInteraction);
+    window.addEventListener('scroll', handleFirstInteraction);
+    window.addEventListener('keydown', handleFirstInteraction);
     window.addEventListener('touchstart', handleFirstInteraction);
     
     return () => {
       window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
       window.removeEventListener('touchstart', handleFirstInteraction);
     };
   }, [isPlaying]);
@@ -38,7 +47,7 @@ export default function AudioPlayer() {
 
   return (
     <>
-      <audio ref={audioRef} src="/data/music.mp3" loop />
+      <audio ref={audioRef} src="/music/music.mp3" loop />
       <button 
         onClick={toggleMute}
         className="fixed bottom-4 right-4 z-50 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20 hover:bg-white/20 transition-all text-white"
