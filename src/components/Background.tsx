@@ -16,8 +16,11 @@ export default function Background() {
 
   return (
     <div 
-      className="fixed inset-0 -z-10 bg-[#050505] bg-cover bg-center transition-all duration-500"
-      style={{ backgroundImage: `url(${bgImage})` }}
+      className="fixed inset-0 -z-10 bg-[#050505] bg-cover bg-center transition-all duration-500 will-change-transform"
+      style={{ 
+        backgroundImage: `url(${bgImage})`,
+        height: '100dvh', // Use dynamic viewport height for mobile stability
+      }}
     >
       <div className="absolute inset-0 bg-black/40" /> {/* Dark overlay for readability */}
     </div>
