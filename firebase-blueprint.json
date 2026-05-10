@@ -1,0 +1,253 @@
+{
+  "entities": {
+    "Admin": {
+      "title": "Admin",
+      "description": "User with administrative privileges",
+      "type": "object",
+      "properties": {
+        "user_id": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["user_id"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User settings and metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "age": { "type": "integer" },
+        "country": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "rank": { "type": "string", "enum": ["Normal", "Premium", "Plus"] },
+        "is_admin": { "type": "boolean" },
+        "rank_expiration": { "type": "string", "format": "date-time" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "phone", "rank"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Store item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "photo_url": { "type": "string" },
+        "price_cop": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "price_cop"]
+    },
+    "Game": {
+      "title": "Game",
+      "description": "Mobile or Video game",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "photo_url": { "type": "string" },
+        "price_cop": { "type": "integer" },
+        "category": { "type": "string", "enum": ["mobile", "pc", "console"] },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Tool": {
+      "title": "Tool",
+      "description": "Software or utility",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "photo_url": { "type": "string" },
+        "free_ranks": { "type": "array", "items": { "type": "string" } },
+        "price_cop": { "type": "integer" },
+        "download_url": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Network": {
+      "title": "Network",
+      "description": "Social network item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "photo_url": { "type": "string" },
+        "price_cop": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "SharedAccount": {
+      "title": "SharedAccount",
+      "description": "Shared login credentials for a platform",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "platform": { "type": "string" },
+        "email": { "type": "string" },
+        "password": { "type": "string" },
+        "price_cop": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Plan": {
+      "title": "Plan",
+      "description": "Subscription plan",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price_cop": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "Admin published updates",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["image", "video"] },
+        "media_url": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Report": {
+      "title": "Report",
+      "description": "User bug reports or suggestions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "user_name": { "type": "string" },
+        "type": { "type": "string", "enum": ["bug", "suggestion", "other"] },
+        "message": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "resolved"] },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "LightNovel": {
+      "title": "LightNovel",
+      "description": "Serialized stories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "photo_url": { "type": "string" },
+        "description": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Chapter": {
+      "title": "Chapter",
+      "description": "Novel chapters",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "novel_id": { "type": "string" },
+        "title": { "type": "string" },
+        "order": { "type": "integer" },
+        "content": { "type": "array" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Stream": {
+      "title": "Stream",
+      "description": "Live broadcast events",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "photo_url": { "type": "string" },
+        "video_url": { "type": "string" },
+        "stream_url": { "type": "string" },
+        "start_time": { "type": "string", "format": "date-time" },
+        "duration_hours": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "ForumPost": {
+      "title": "ForumPost",
+      "description": "User discussion thread",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "user_name": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "likes_count": { "type": "integer" },
+        "comments_count": { "type": "integer" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "admins": {
+      "schema": "Admin",
+      "description": "Whitelist of administrative users"
+    },
+    "profiles": {
+      "schema": "UserProfile",
+      "description": "User profiles"
+    },
+    "announcements": {
+      "schema": "Announcement",
+      "description": "Admin announcements"
+    },
+    "reports": {
+      "schema": "Report",
+      "description": "User reports"
+    },
+    "novels": {
+      "schema": "LightNovel",
+      "description": "Light novels"
+    },
+    "chapters": {
+      "schema": "Chapter",
+      "description": "Novel chapters"
+    },
+    "streams": {
+      "schema": "Stream",
+      "description": "Live streams"
+    },
+    "forums": {
+      "schema": "ForumPost",
+      "description": "Forum posts"
+    },
+    "products": {
+      "schema": "Product",
+      "description": "Items in the store"
+    },
+    "games": {
+      "schema": "Game",
+      "description": "Games"
+    },
+    "tools": {
+      "schema": "Tool",
+      "description": "Tools and utilities"
+    },
+    "networks": {
+      "schema": "Network",
+      "description": "Social network items"
+    },
+    "shared_accounts": {
+      "schema": "SharedAccount",
+      "description": "Shared accounts"
+    },
+    "plans": {
+      "schema": "Plan",
+      "description": "Membership plans"
+    }
+  }
+}
