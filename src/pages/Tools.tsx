@@ -127,7 +127,7 @@ export default function Tools() {
       <div className="space-y-8">
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <h2 className="text-white/60 font-bold uppercase tracking-[0.2em] text-sm mb-2">Power Up Your Experience</h2>
+            <h2 className="text-white/80 font-bold uppercase tracking-[0.2em] text-sm mb-2">Power Up Your Experience</h2>
             <h1 className="text-4xl font-black tracking-tighter">HERRAMIENTAS</h1>
           </div>
 
@@ -173,7 +173,7 @@ export default function Tools() {
                     </div>
                   </div>
                   
-                  <p className="text-white/60 text-sm font-medium mb-8 line-clamp-3">{tool.description}</p>
+                  <p className="text-white/80 text-sm font-medium mb-8 line-clamp-3">{tool.description}</p>
                   
                   <div className="mt-auto space-y-4">
                     <div className="flex gap-1.5 overflow-x-auto pb-2 scrollbar-hide">
@@ -206,7 +206,7 @@ export default function Tools() {
             })
           ) : (
             <div className="col-span-full py-20 text-center">
-              <p className="text-white/20 font-black tracking-widest uppercase">No se encontraron herramientas</p>
+              <p className="text-white/60 font-black tracking-widest uppercase">No se encontraron herramientas</p>
             </div>
           )}
         </div>

@@ -109,7 +109,7 @@ export default function Novels() {
             </div>
             <div className="flex-grow">
               <h2 className="text-2xl font-black tracking-tight uppercase">BIBLIOTECA SPECTRA</h2>
-              <p className="text-white/80 font-medium tracking-wide">Lee las mejores novelas ligeras de la plataforma.</p>
+              <p className="text-white font-medium tracking-wide">Lee las mejores novelas ligeras de la plataforma.</p>
             </div>
             <div className="relative group min-w-[280px]">
               <input 

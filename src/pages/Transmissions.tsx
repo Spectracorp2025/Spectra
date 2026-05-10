@@ -256,7 +256,7 @@ export default function Transmissions() {
                     <h3 className="text-2xl font-black uppercase tracking-tight mb-2 group-hover:text-red-500 transition-colors">{stream.title}</h3>
                     <div className="relative">
                       <p className={cn(
-                        "text-white/60 text-sm font-medium leading-relaxed transition-all duration-300",
+                        "text-white/80 text-sm font-medium leading-relaxed transition-all duration-300",
                         expandedId === stream.id ? "" : "line-clamp-2"
                       )}>
                         {stream.description}
@@ -294,9 +294,9 @@ export default function Transmissions() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">
-            <Radio size={48} className="mx-auto text-white/20 mb-4" />
-            <p className="text-white/40 font-medium uppercase tracking-widest text-[10px]">No hay transmisiones programadas.</p>
+          <div className="text-center py-20 bg-black/40 rounded-3xl border border-white/20 shadow-2xl backdrop-blur-md">
+            <Radio size={48} className="mx-auto text-white/30 mb-4" />
+            <p className="text-white/80 font-bold uppercase tracking-widest text-[10px]">No hay transmisiones programadas.</p>
           </div>
         )}
       </div>

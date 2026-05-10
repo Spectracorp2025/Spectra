@@ -152,10 +152,10 @@ export default function Store() {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {isLoading ? (
             Array(3).fill(0).map((_, i) => (
-              <div key={i} className="bg-white/5 border border-white/5 rounded-[2rem] h-96 animate-pulse" />
+              <div key={i} className="bg-white/5 border border-white/5 rounded-[1.5rem] md:rounded-[2.5rem] h-64 md:h-96 animate-pulse" />
             ))
           ) : filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
@@ -164,51 +164,44 @@ export default function Store() {
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col relative"
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex flex-col relative"
               >
                 <div className="aspect-square w-full overflow-hidden relative">
                    <img src={product.photo_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                   <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full font-black text-sm text-indigo-400">
-                     ${product.price_cop.toLocaleString('es-CO')} COP
+                   <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/60 backdrop-blur-md border border-white/10 px-2 md:px-4 py-1 rounded-full font-black text-[10px] md:text-sm text-indigo-400">
+                     ${product.price_cop.toLocaleString('es-CO')}
                    </div>
                    {user?.is_admin && (
-                      <div className="absolute top-4 left-4 flex gap-2">
-                        <button onClick={(e) => openModal(e, product)} className="p-2 bg-white/10 backdrop-blur-md rounded-xl hover:bg-white/20 transition-all text-white border border-white/10">
-                          <Edit2 size={16} />
+                      <div className="absolute top-2 left-2 md:top-4 md:left-4 flex gap-1 md:gap-2">
+                        <button onClick={(e) => openModal(e, product)} className="p-1.5 md:p-2 bg-white/10 backdrop-blur-md rounded-lg md:rounded-xl hover:bg-white/20 transition-all text-white border border-white/10">
+                          <Edit2 size={12} className="md:w-4 md:h-4" />
                         </button>
-                        <button onClick={(e) => handleDelete(e, product.id)} className="p-2 bg-red-500/20 backdrop-blur-md rounded-xl hover:bg-red-500/40 transition-all text-red-400 border border-red-500/20">
-                          <Trash2 size={16} />
+                        <button onClick={(e) => handleDelete(e, product.id)} className="p-1.5 md:p-2 bg-red-500/20 backdrop-blur-md rounded-lg md:rounded-xl hover:bg-red-500/40 transition-all text-red-400 border border-red-500/20">
+                          <Trash2 size={12} className="md:w-4 md:h-4" />
                         </button>
                       </div>
                    )}
                 </div>
                 
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-black mb-2 uppercase tracking-tight">{product.name}</h3>
+                <div className="p-3 md:p-6 flex-1 flex flex-col">
+                  <h3 className="text-sm md:text-xl font-black mb-1 md:mb-2 uppercase tracking-tight line-clamp-1">{product.name}</h3>
                   <div className="relative">
                     <p className={cn(
-                      "text-white/60 text-sm font-medium mb-4 transition-all duration-300",
-                      expandedId === product.id ? "" : "line-clamp-3"
+                      "text-white/80 text-[10px] md:text-sm font-medium mb-2 md:mb-4 transition-all duration-300",
+                      expandedId === product.id ? "" : "line-clamp-2 md:line-clamp-3"
                     )}>
                       {product.description}
                     </p>
-                    {product.description.length > 100 && (
-                      <button 
-                        onClick={() => setExpandedId(expandedId === product.id ? null : product.id)}
-                        className="text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-4 hover:text-white transition-colors"
-                      >
-                        {expandedId === product.id ? 'VER MENOS' : 'VER MÁS'}
-                      </button>
-                    )}
                   </div>
                   
-                  <div className="mt-auto pt-4 flex gap-3">
+                  <div className="mt-auto pt-2 flex gap-2">
                     <button 
                       onClick={() => buyProduct(product)}
-                      className="flex-1 bg-white text-black font-black py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-indigo-400 hover:text-white transition-all shadow-lg active:scale-95"
+                      className="flex-1 bg-white text-black font-black py-2 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-1 md:gap-2 hover:bg-indigo-400 hover:text-white transition-all shadow-lg active:scale-95 text-[10px] md:text-sm"
                     >
-                      <ShoppingBag size={18} />
-                      COMPRAR AHORA
+                      <ShoppingBag size={14} className="md:w-5 md:h-5" />
+                      <span className="hidden xs:inline">COMPRAR</span>
+                      <span className="xs:hidden">CORTAR</span>
                     </button>
                   </div>
                 </div>
@@ -216,8 +209,8 @@ export default function Store() {
             ))
           ) : (
             <div className="col-span-full py-20 text-center">
-              <ShoppingBag size={64} className="mx-auto text-white/10 mb-4" />
-              <p className="text-white/40 font-bold uppercase tracking-widest">No hay productos disponibles</p>
+              <ShoppingBag size={64} className="mx-auto text-white/20 mb-4" />
+              <p className="text-white/60 font-bold uppercase tracking-widest">No hay productos disponibles</p>
             </div>
           )}
         </div>

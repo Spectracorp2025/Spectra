@@ -148,7 +148,7 @@ export default function Forums() {
                   
                   <div className="relative">
                     <p className={cn(
-                      "text-white/60 text-sm leading-relaxed transition-all duration-300",
+                      "text-white/80 text-sm leading-relaxed transition-all duration-300",
                       expandedId === post.id ? "" : "line-clamp-2"
                     )}>
                       {post.content}
@@ -178,9 +178,9 @@ export default function Forums() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-white/5 rounded-[2rem] border border-white/10">
-            <MessageSquare size={48} className="mx-auto text-white/20 mb-4" />
-            <p className="text-white/40 font-medium">No hay temas de discusión todavía. ¡Sé el primero!</p>
+          <div className="text-center py-20 bg-black/40 rounded-[2rem] border border-white/20 shadow-2xl backdrop-blur-md">
+            <MessageSquare size={48} className="mx-auto text-white/30 mb-4" />
+            <p className="text-white/80 font-bold uppercase tracking-widest">No hay temas de discusión todavía. ¡Sé el primero!</p>
           </div>
         )}
       </div>

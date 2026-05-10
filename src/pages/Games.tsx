@@ -147,7 +147,7 @@ export default function Games({ type = 'mobile' }: { type?: 'mobile' | 'pc' }) {
       <div className="space-y-8">
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <h2 className="text-white/60 font-bold uppercase tracking-[0.2em] text-sm mb-2">{type === 'mobile' ? 'Mobile Entertainment' : 'PC & Console Experience'}</h2>
+            <h2 className="text-white/80 font-bold uppercase tracking-[0.2em] text-sm mb-2">{type === 'mobile' ? 'Mobile Entertainment' : 'PC & Console Experience'}</h2>
             <h1 className="text-4xl font-black tracking-tighter uppercase">{type === 'mobile' ? 'Juegos Movil' : 'Videojuegos'}</h1>
           </div>
           
@@ -219,7 +219,7 @@ export default function Games({ type = 'mobile' }: { type?: 'mobile' | 'pc' }) {
                     <h3 className="text-xl font-black mb-2 uppercase tracking-tight">{game.name}</h3>
                     <div className="relative">
                       <p className={cn(
-                        "text-white/60 text-sm font-medium mb-4 transition-all duration-300",
+                        "text-white/80 text-sm font-medium mb-4 transition-all duration-300",
                         expandedId === game.id ? "" : "line-clamp-2"
                       )}>
                         {game.description}
@@ -280,8 +280,8 @@ export default function Games({ type = 'mobile' }: { type?: 'mobile' | 'pc' }) {
             })
           ) : (
             <div className="col-span-full py-20 text-center">
-              <Gamepad2 size={64} className="mx-auto text-white/10 mb-4" />
-              <p className="text-white/40 font-bold uppercase tracking-widest">No hay {type === 'mobile' ? 'juegos móviles' : 'videojuegos'} disponibles</p>
+              <Gamepad2 size={64} className="mx-auto text-white/20 mb-4" />
+              <p className="text-white/60 font-bold uppercase tracking-widest">No hay {type === 'mobile' ? 'juegos móviles' : 'videojuegos'} disponibles</p>
             </div>
           )}
         </div>

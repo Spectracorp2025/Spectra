@@ -186,7 +186,7 @@ export default function Announcements() {
                     <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{ann.title}</h3>
                     <div className="relative">
                       <p className={cn(
-                        "text-white/60 text-sm leading-relaxed whitespace-pre-wrap transition-all duration-300",
+                        "text-white/80 text-sm leading-relaxed whitespace-pre-wrap transition-all duration-300",
                         expandedId === ann.id ? "" : "line-clamp-3"
                       )}>
                         {ann.description}
@@ -211,9 +211,9 @@ export default function Announcements() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">
-            <Megaphone size={48} className="mx-auto text-white/20 mb-4" />
-            <p className="text-white/40 font-medium">No hay anuncios publicados todavía.</p>
+          <div className="text-center py-20 bg-black/40 rounded-3xl border border-white/20 shadow-2xl backdrop-blur-md">
+            <Megaphone size={48} className="mx-auto text-white/30 mb-4" />
+            <p className="text-white/80 font-bold uppercase tracking-widest">No hay anuncios publicados todavía.</p>
           </div>
         )}
       </div>
