@@ -19,10 +19,10 @@ export default function Background() {
       className="fixed inset-0 -z-10 bg-[#050505] bg-cover bg-center transition-all duration-500 will-change-transform"
       style={{ 
         backgroundImage: `url(${bgImage})`,
-        height: '100dvh', // Use dynamic viewport height for mobile stability
+        backgroundAttachment: 'scroll', // Prevent mobile glitching
       }}
     >
-      <div className="absolute inset-0 bg-black/40" /> {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/60" /> {/* Increased overlay opacity for better contrast */}
     </div>
   );
 }

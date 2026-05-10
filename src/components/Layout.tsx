@@ -86,10 +86,10 @@ export default function Layout({ children, title }: LayoutProps) {
                 "flex items-center gap-3 px-4 py-3 rounded-xl transition-all group",
                 location.pathname === item.path 
                   ? "bg-white/10 text-white shadow-lg shadow-white/5 border border-white/10" 
-                  : "text-white/60 hover:text-white hover:bg-white/5"
+                  : "text-white/80 hover:text-white hover:bg-white/5"
               )}
             >
-              <item.icon size={18} className={cn(location.pathname === item.path ? "text-indigo-400" : "group-hover:text-indigo-400")} />
+              <item.icon size={18} className={cn(location.pathname === item.path ? "text-indigo-400" : "text-white/40 group-hover:text-indigo-400")} />
               <span className="font-bold text-sm tracking-tight">{item.label.toUpperCase()}</span>
             </Link>
           ))}
