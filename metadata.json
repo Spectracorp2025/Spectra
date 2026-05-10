@@ -1,6 +1,6 @@
 {
   "name": "SPECTRA",
-  "description": "Plataforma estática con gestión de usuarios, roles (Normal, Premium, Plus) y secciones de tienda, juegos, herramientas y más. Conexión a base de datos Supabase.",
+  "description": "Plataforma estática con gestión de usuarios, roles (Normal, Premium, Plus) y secciones de tienda, juegos, herramientas y más. Conexión a Firebase para autenticación y base de datos Firestore.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }
