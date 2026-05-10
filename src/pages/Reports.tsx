@@ -40,10 +40,18 @@ export default function Reports() {
       }
       
       const querySnapshot = await getDocs(q);
-      const docs = querySnapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-      })) as Report[];
+      const docs = querySnapshot.docs.map(d => {
+        const data = d.data() as any;
+        return {
+          id: d.id,
+          user_id: data.user_id,
+          user_name: data.user_name,
+          type: data.type,
+          message: data.message,
+          status: data.status,
+          created_at: data.created_at?.toDate?.()?.toISOString() || new Date().toISOString()
+        };
+      }) as Report[];
       setReports(docs);
     } catch (err) {
       console.error('Error fetching reports:', err);
