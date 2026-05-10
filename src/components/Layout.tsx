@@ -59,7 +59,20 @@ export default function Layout({ children, title }: LayoutProps) {
       <aside className="hidden md:flex flex-col w-64 bg-black/40 backdrop-blur-xl border-r border-white/10 fixed h-full z-50">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-10 px-2">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl shadow-lg shadow-indigo-600/20">S</div>
+            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-indigo-600/20">
+              <img 
+                src="/logo.png" 
+                alt="S" 
+                className="w-full h-full object-cover" 
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  if (target.parentElement) {
+                    target.parentElement.innerText = 'S';
+                  }
+                }}
+              />
+            </div>
             <h1 className="text-2xl font-black tracking-wider italic">SPECTRA</h1>
           </div>
         </div>
@@ -115,7 +128,20 @@ export default function Layout({ children, title }: LayoutProps) {
       {/* Mobile Header */}
       <header className="md:hidden fixed top-0 left-0 right-0 z-[60] bg-black/60 backdrop-blur-2xl border-b border-white/10 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-lg">S</div>
+          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center overflow-hidden">
+            <img 
+              src="/logo.png" 
+              alt="S" 
+              className="w-full h-full object-cover" 
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                if (target.parentElement) {
+                  target.parentElement.innerText = 'S';
+                }
+              }}
+            />
+          </div>
           <h1 className="text-xl font-black tracking-wider italic">SPECTRA</h1>
         </div>
         <button 
