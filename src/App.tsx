@@ -111,7 +111,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{ user, setUser, isLoading, logout }}>
-      <BrowserRouter>
+      <BrowserRouter basename="/Spectra">
         <div className="min-h-screen text-white font-sans selection:bg-white/30">
           <Background />
           <AudioPlayer />
