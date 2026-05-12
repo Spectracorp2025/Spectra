@@ -309,16 +309,18 @@ export default function Transmissions() {
                   </div>
 
                   <button 
-                    onClick={() => window.open(stream.stream_url, '_blank')}
-                    disabled={countdowns[stream.id] !== 'EN VIVO'}
+                    onClick={() => stream.stream_url && window.open(stream.stream_url, '_blank')}
+                    disabled={countdowns[stream.id] !== 'EN VIVO' || !stream.stream_url}
                     className={`w-full flex items-center justify-center gap-3 py-4 rounded-2xl font-black tracking-[0.2em] transition-all uppercase shadow-xl ${
-                      countdowns[stream.id] === 'EN VIVO' 
+                      countdowns[stream.id] === 'EN VIVO' && stream.stream_url
                       ? 'bg-white text-black hover:scale-105 active:scale-95' 
                       : 'bg-white/5 text-white/20 border border-white/5 grayscale cursor-not-allowed'
                     }`}
                   >
                     <ExternalLink size={20} />
-                    {countdowns[stream.id] === 'EN VIVO' ? 'INGRESAR AL VIVO' : 'TRANSMISIÓN NO INICIADA'}
+                    {countdowns[stream.id] === 'EN VIVO' 
+                      ? (stream.stream_url ? 'INGRESAR AL VIVO' : 'ENLACE NO DISPONIBLE') 
+                      : 'TRANSMISIÓN NO INICIADA'}
                   </button>
                 </div>
               </motion.div>
@@ -361,22 +363,27 @@ export default function Transmissions() {
                       required 
                     />
                     <div className="grid grid-cols-2 gap-4">
-                       <input 
-                         type="url" placeholder="URL de Portada" value={formData.photo_url} 
-                         onChange={e => setFormData({...formData, photo_url: e.target.value})}
-                         className="bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
-                         required 
-                       />
-                       <input 
-                         type="url" placeholder="Video URL (Opcional)" value={formData.video_url} 
-                         onChange={e => setFormData({...formData, video_url: e.target.value})}
-                         className="bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
-                       />
+                       <div className="space-y-1">
+                          <label className="text-[10px] font-black text-white/40 uppercase ml-1">Imagen de Portada</label>
+                          <input 
+                            type="url" placeholder="URL de Imagen" value={formData.photo_url} 
+                            onChange={e => setFormData({...formData, photo_url: e.target.value})}
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
+                          />
+                       </div>
+                       <div className="space-y-1">
+                          <label className="text-[10px] font-black text-white/40 uppercase ml-1">Fondo Video (YouTube)</label>
+                          <input 
+                            type="url" placeholder="URL de Video (Opcional)" value={formData.video_url} 
+                            onChange={e => setFormData({...formData, video_url: e.target.value})}
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
+                          />
+                       </div>
                     </div>
                     <div>
-                       <label className="text-[10px] font-black text-white/40 uppercase mb-1 ml-1 block">LINK DE TRANSMISIÓN (SE PUEDE PONER DESPUÉS)</label>
+                       <label className="text-[10px] font-black text-white/40 uppercase mb-1 ml-1 block">LINK DE TRANSMISIÓN (PUEDE SER RAVE O DIRECTO)</label>
                        <input 
-                         type="url" placeholder="https://..." value={formData.stream_url} 
+                         type="url" placeholder="Dejar vacío si no está listo todavía" value={formData.stream_url} 
                          onChange={e => setFormData({...formData, stream_url: e.target.value})}
                          className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
                        />

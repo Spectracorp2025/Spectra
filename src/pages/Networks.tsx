@@ -126,14 +126,27 @@ export default function Networks() {
             {isModalOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={closeModal} className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="relative w-full max-w-md bg-zinc-900 border border-white/10 rounded-[2.5rem] p-8 shadow-2xl">
-                        <h2 className="text-2xl font-black uppercase mb-6">{editingNetwork ? 'Editar' : 'Nueva'} Red Social</h2>
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="relative w-full max-w-md bg-zinc-900 border border-white/20 rounded-[2.5rem] p-8 shadow-2xl overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-indigo-500" />
+                        <h2 className="text-2xl font-black uppercase mb-6 flex items-center gap-3">
+                            {editingNetwork ? <Edit2 className="text-indigo-500" /> : <Plus className="text-indigo-500" />}
+                            {editingNetwork ? 'Modificar' : 'Añadir'} Red Social
+                        </h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            <input required placeholder="Título" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 outline-none focus:border-indigo-500/50 transition-all font-medium" />
-                            <input required placeholder="URL Icono/Foto" value={formData.photo_url} onChange={e => setFormData({...formData, photo_url: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 outline-none focus:border-indigo-500/50 transition-all font-medium" />
-                            <input required placeholder="Link de Red Social" value={formData.link} onChange={e => setFormData({...formData, link: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 outline-none focus:border-indigo-500/50 transition-all font-medium" />
-                            <button type="submit" className="w-full bg-white text-black font-black py-4 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all mt-4 uppercase">
-                                {editingNetwork ? 'Guardar Cambios' : 'Añadir Red'}
+                            <div>
+                                <label className="text-[10px] font-black text-white/40 uppercase mb-1 ml-1 block">Nombre de la Red / Perfil</label>
+                                <input required placeholder="Ej: Instagram, WhatsApp..." value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-5 outline-none focus:border-indigo-500/50 transition-all font-medium text-white" />
+                            </div>
+                            <div>
+                                <label className="text-[10px] font-black text-white/40 uppercase mb-1 ml-1 block">URL Foto de Perfil / Icono</label>
+                                <input required placeholder="https://..." value={formData.photo_url} onChange={e => setFormData({...formData, photo_url: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-5 outline-none focus:border-indigo-500/50 transition-all font-medium text-white" />
+                            </div>
+                            <div>
+                                <label className="text-[10px] font-black text-white/40 uppercase mb-1 ml-1 block">Enlace Directo</label>
+                                <input required placeholder="https://..." value={formData.link} onChange={e => setFormData({...formData, link: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-5 outline-none focus:border-indigo-500/50 transition-all font-medium text-white" />
+                            </div>
+                            <button type="submit" className="w-full bg-white text-black font-black py-4 rounded-2xl hover:bg-indigo-500 hover:text-white transition-all mt-4 uppercase tracking-widest text-xs">
+                                {editingNetwork ? 'Guardar Cambios' : 'Publicar Red'}
                             </button>
                         </form>
                     </motion.div>
