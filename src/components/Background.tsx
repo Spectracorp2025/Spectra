@@ -16,13 +16,16 @@ export default function Background() {
 
   return (
     <div 
-      className="fixed inset-0 -z-10 bg-[#050505] bg-cover bg-center transition-all duration-500 will-change-transform"
-      style={{ 
-        backgroundImage: `url(${bgImage})`,
-        backgroundAttachment: 'scroll', // Prevent mobile glitching
-      }}
+      className="fixed inset-0 -z-10 bg-[#050505] transition-all duration-500 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-black/60" /> {/* Increased overlay opacity for better contrast */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
+        style={{ 
+          backgroundImage: `url(${bgImage})`,
+          transform: 'translateZ(0)', // Force GPU acceleration
+        }}
+      />
+      <div className="absolute inset-0 bg-black/70" /> {/* Increased overlay opacity for better contrast */}
     </div>
   );
 }
