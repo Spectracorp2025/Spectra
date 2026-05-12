@@ -137,44 +137,53 @@ export default function Novels() {
             <div className="w-10 h-10 border-4 border-white/10 border-t-emerald-500 rounded-full animate-spin"></div>
           </div>
         ) : filteredNovels.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {filteredNovels.map((novel) => (
-              <motion.div 
-                key={novel.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ y: -5 }}
-                onClick={() => navigate(`/novels/${novel.id}`)}
-                className="group cursor-pointer"
-              >
-                <div className="relative aspect-[2/3] rounded-2xl overflow-hidden mb-3 border border-white/10 group-hover:border-emerald-500/50 transition-all">
-                  <img src={novel.photo_url} alt={novel.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                    <span className="text-[10px] font-black tracking-widest uppercase text-emerald-400 flex items-center gap-1">
-                      VER NOVELA <ChevronRight size={14} />
-                    </span>
-                  </div>
-                  {user?.is_admin && (
-                    <div className="absolute top-2 right-2 flex gap-1">
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); openModal(novel); }}
-                        className="p-1.5 bg-black/60 backdrop-blur-md rounded-lg text-white hover:bg-white hover:text-black transition-all"
-                      >
-                        <Edit2 size={12} />
-                      </button>
-                      <button 
-                        onClick={(e) => handleDelete(novel.id, e)}
-                        className="p-1.5 bg-red-500/80 backdrop-blur-md rounded-lg text-white hover:bg-red-600 transition-all"
-                      >
-                        <Trash2 size={12} />
-                      </button>
+          <div className="relative group/scroll">
+            <div className="flex overflow-x-auto gap-6 pb-8 px-2 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+              {filteredNovels.map((novel) => (
+                <motion.div 
+                  key={novel.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -10 }}
+                  onClick={() => navigate(`/novels/${novel.id}`)}
+                  className="snap-start flex-shrink-0 w-[200px] sm:w-[240px] group cursor-pointer"
+                >
+                  <div className="relative aspect-[2/3] rounded-[2.5rem] overflow-hidden mb-4 border-2 border-white/5 group-hover:border-emerald-500 transition-all duration-500 shadow-2xl">
+                    <img src={novel.photo_url} alt={novel.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    <div className="absolute inset-0 flex items-end p-6">
+                      <span className="text-[10px] font-black tracking-[0.2em] uppercase text-emerald-400 bg-emerald-500/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-500/20 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 flex items-center gap-1">
+                        LEER AHORA <ChevronRight size={14} />
+                      </span>
                     </div>
-                  )}
-                </div>
-                <h3 className="font-bold text-sm truncate uppercase tracking-tight group-hover:text-emerald-400 transition-colors uppercase">{novel.title}</h3>
-                <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest mt-0.5">SPECTRA ORIGINALS</p>
-              </motion.div>
-            ))}
+                    {user?.is_admin && (
+                      <div className="absolute top-4 right-4 flex gap-2">
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); openModal(novel); }}
+                          className="p-2 bg-black/60 backdrop-blur-md rounded-xl text-white hover:bg-white hover:text-black transition-all border border-white/10"
+                        >
+                          <Edit2 size={14} />
+                        </button>
+                        <button 
+                          onClick={(e) => handleDelete(novel.id, e)}
+                          className="p-2 bg-red-500/80 backdrop-blur-md rounded-xl text-white hover:bg-red-600 transition-all border border-white/10"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="font-black text-lg uppercase tracking-tight group-hover:text-emerald-400 transition-colors px-2 leading-tight break-words">{novel.title}</h3>
+                  <p className="text-[10px] text-white/30 font-black uppercase tracking-[0.3em] mt-1 pr-2 px-2">SPECTRA ORIGINALS</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-12 h-12 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full items-center justify-center hidden group-hover/scroll:flex text-white/40 hover:text-white transition-all cursor-pointer shadow-2xl">
+              <ChevronRight size={24} className="rotate-180" />
+            </div>
+            <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-12 h-12 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full items-center justify-center hidden group-hover/scroll:flex text-white/40 hover:text-white transition-all cursor-pointer shadow-2xl">
+              <ChevronRight size={24} />
+            </div>
           </div>
         ) : (
           <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">

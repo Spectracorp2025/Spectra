@@ -93,27 +93,30 @@ export default function Networks() {
           )}
         </header>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {isLoading ? Array(4).fill(0).map((_, i) => <div key={i} className="aspect-square bg-white/5 rounded-[2.5rem] animate-pulse" />) : networks.map(network => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {isLoading ? Array(4).fill(0).map((_, i) => <div key={i} className="aspect-video bg-white/5 rounded-[2.5rem] animate-pulse" />) : networks.map(network => (
             <motion.a 
               key={network.id}
               href={network.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-6 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-all relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="group bg-black/40 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8 flex flex-col items-center justify-center text-center hover:bg-black/60 hover:border-indigo-500/50 transition-all duration-500 relative shadow-2xl"
             >
-              <div className="w-20 h-20 mb-4 rounded-3xl overflow-hidden shadow-2xl group-hover:scale-110 transition-transform duration-500">
+              <div className="w-28 h-28 mb-6 rounded-[2rem] overflow-hidden shadow-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-700 border border-white/10">
                 <img src={network.photo_url} alt={network.title} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-black text-sm uppercase tracking-wider line-clamp-1">{network.title}</h3>
-              <ExternalLink size={14} className="mt-4 text-white/20 group-hover:text-indigo-400 transition-colors" />
+              <h3 className="font-black text-xl md:text-2xl uppercase tracking-tighter text-white group-hover:text-indigo-400 transition-colors uppercase">{network.title}</h3>
+              <div className="mt-4 px-6 py-2 bg-white/5 rounded-full border border-white/5 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 flex items-center gap-2">
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">IR AL PERFIL</span>
+                 <ExternalLink size={14} className="text-indigo-400" />
+              </div>
 
               {user?.is_admin && (
-                <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={(e) => { e.preventDefault(); openModal(e, network); }} className="p-2 bg-black/40 rounded-xl text-white hover:text-indigo-400"><Edit2 size={14} /></button>
-                  <button onClick={(e) => { e.preventDefault(); handleDelete(e, network.id); }} className="p-2 bg-black/40 rounded-xl text-red-500 hover:text-red-400"><Trash2 size={14} /></button>
+                <div className="absolute top-6 right-6 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button onClick={(e) => { e.preventDefault(); openModal(e, network); }} className="p-3 bg-white text-black rounded-2xl hover:bg-indigo-500 hover:text-white transition-all shadow-xl"><Edit2 size={16} /></button>
+                  <button onClick={(e) => { e.preventDefault(); handleDelete(e, network.id); }} className="p-3 bg-red-500 text-white rounded-2xl hover:bg-red-600 transition-all shadow-xl"><Trash2 size={16} /></button>
                 </div>
               )}
             </motion.a>

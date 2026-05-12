@@ -18,6 +18,7 @@ export default function Accounts() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingAccount, setEditingAccount] = useState<SharedAccount | null>(null);
   const [showPass, setShowPass] = useState<string | null>(null);
+  const [showEmail, setShowEmail] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     platform: '',
     email: '',
@@ -160,25 +161,42 @@ export default function Accounts() {
                 </div>
 
                 <div className="space-y-3">
-                   <div className="bg-white/5 rounded-2xl p-4 flex items-center justify-between border border-white/5">
-                      <div className="flex items-center gap-3">
-                         <FileText size={16} className="text-white/20" />
-                         <span className="text-sm font-medium text-white/80">{acc.email}</span>
+                   <div className="bg-white/5 rounded-2xl p-4 flex items-center justify-between border border-white/5 overflow-hidden">
+                      <div className="flex items-center gap-3 overflow-hidden flex-1">
+                         <FileText size={16} className="text-white/20 flex-shrink-0" />
+                         <span className={cn(
+                           "text-sm font-medium text-white/80 truncate",
+                           showEmail === acc.id ? "" : "blur-sm select-none"
+                         )}>
+                            {showEmail === acc.id ? acc.email : '••••••••••••••••'}
+                         </span>
                       </div>
-                      <button onClick={() => { navigator.clipboard.writeText(acc.email); }} className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300">COPIAR</button>
+                      <div className="flex items-center gap-3 ml-4">
+                        <button onClick={() => setShowEmail(showEmail === acc.id ? null : acc.id)} className="text-white/20 hover:text-white">
+                           {showEmail === acc.id ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
+                        {showEmail === acc.id && (
+                          <button onClick={() => { navigator.clipboard.writeText(acc.email); }} className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300">COPIAR</button>
+                        )}
+                      </div>
                    </div>
                    
-                   <div className="bg-white/5 rounded-2xl p-4 flex items-center justify-between border border-white/5">
-                      <div className="flex items-center gap-3">
-                         <Lock size={16} className="text-white/20" />
-                         <span className={cn("text-sm font-bold font-mono tracking-wider transition-all", hasAccess ? "" : "blur-sm select-none")}>
+                   <div className="bg-white/5 rounded-2xl p-4 flex items-center justify-between border border-white/5 overflow-hidden">
+                      <div className="flex items-center gap-3 overflow-hidden flex-1">
+                         <Lock size={16} className="text-white/20 flex-shrink-0" />
+                         <span className={cn("text-sm font-bold font-mono tracking-wider truncate transition-all", hasAccess ? "" : "blur-sm select-none")}>
                             {showPass === acc.id || !hasAccess ? (hasAccess ? acc.password : '********') : '••••••••'}
                          </span>
                       </div>
                       {hasAccess ? (
-                        <button onClick={() => setShowPass(showPass === acc.id ? null : acc.id)} className="text-white/20 hover:text-white">
-                          {showPass === acc.id ? <EyeOff size={16} /> : <Eye size={16} />}
-                        </button>
+                        <div className="flex items-center gap-3 ml-4">
+                          <button onClick={() => setShowPass(showPass === acc.id ? null : acc.id)} className="text-white/20 hover:text-white">
+                            {showPass === acc.id ? <EyeOff size={14} /> : <Eye size={14} />}
+                          </button>
+                          {showPass === acc.id && (
+                             <button onClick={() => { navigator.clipboard.writeText(acc.password); }} className="text-[10px] font-bold text-indigo-400 hover:text-indigo-300">COPIAR</button>
+                          )}
+                        </div>
                       ) : (
                         <div className="text-[8px] font-black uppercase bg-red-500/20 text-red-400 px-2 py-1 rounded">No Access</div>
                       )}

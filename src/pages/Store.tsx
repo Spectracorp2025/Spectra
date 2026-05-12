@@ -164,10 +164,10 @@ export default function Store() {
                 layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex flex-col relative"
+                className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex flex-col relative"
               >
                 <div className="aspect-square w-full overflow-hidden relative">
-                   <img src={product.photo_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                   <img src={product.photo_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                    <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/60 backdrop-blur-md border border-white/10 px-2 md:px-4 py-1 rounded-full font-black text-[10px] md:text-sm text-indigo-400">
                      ${product.price_cop.toLocaleString('es-CO')}
                    </div>

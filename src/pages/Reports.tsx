@@ -151,7 +151,7 @@ export default function Reports() {
                 key={report.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-black/30 border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all group"
+                className="bg-black/60 backdrop-blur-xl border border-white/20 rounded-2xl p-6 hover:border-indigo-500/40 transition-all group shadow-2xl"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-start gap-4">
@@ -168,14 +168,14 @@ export default function Reports() {
                         </span>
                       </div>
                       {user?.is_admin && (
-                        <div className="flex items-center gap-2 text-white/40 mb-1">
+                        <div className="flex items-center gap-2 text-indigo-400 mb-2">
                           <User size={12} />
-                          <span className="text-xs font-bold uppercase">{report.user_name}</span>
+                          <span className="text-xs font-black uppercase tracking-wider">{report.user_name}</span>
                         </div>
                       )}
                        <div className="relative">
                         <p className={cn(
-                          "text-white/80 font-medium leading-relaxed transition-all duration-300",
+                          "text-white text-sm font-medium leading-relaxed transition-all duration-300",
                           expandedId === report.id ? "" : "line-clamp-2"
                         )}>
                           {report.message}

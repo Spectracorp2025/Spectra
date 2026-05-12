@@ -219,21 +219,42 @@ export default function Transmissions() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-black/40 border border-white/10 rounded-3xl overflow-hidden group hover:border-red-500/30 transition-all flex flex-col"
               >
-                <div className="relative aspect-video">
-                  <img src={stream.photo_url} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="relative aspect-video bg-black">
+                  {stream.video_url && stream.video_url.includes('youtube.com/embed') ? (
+                    <iframe 
+                      src={stream.video_url} 
+                      className="w-full h-full" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                    ></iframe>
+                  ) : stream.video_url && (stream.video_url.includes('youtube.com/watch') || stream.video_url.includes('youtu.be')) ? (
+                    <iframe 
+                      src={`https://www.youtube.com/embed/${stream.video_url.split('v=')[1] || stream.video_url.split('/').pop()}`} 
+                      className="w-full h-full" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                    ></iframe>
+                  ) : (
+                    <img src={stream.photo_url} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" referrerPolicy="no-referrer" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
                   
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    <div className="flex items-center gap-2 px-3 py-1 bg-red-500 text-white text-[10px] font-black uppercase rounded-full shadow-lg">
+                    <div className={cn(
+                      "flex items-center gap-2 px-3 py-1 text-[10px] font-black uppercase rounded-full shadow-lg border backdrop-blur-md",
+                      countdowns[stream.id] === 'EN VIVO' 
+                        ? "bg-red-500 text-white border-red-400" 
+                        : "bg-black/60 text-white/60 border-white/10"
+                    )}>
                       <Radio size={12} className={countdowns[stream.id] === 'EN VIVO' ? 'animate-pulse' : ''} />
                       {countdowns[stream.id] === 'EN VIVO' ? 'EN VIVO' : 'PROGRAMADO'}
                     </div>
                   </div>
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                     <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-6 rounded-[2rem] min-w-[200px] text-center shadow-2xl">
-                        <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] mb-2 block">COMIENZA EN</span>
-                        <div className="text-4xl font-black tabular-nums tracking-tighter text-white">
+                  <div className="absolute bottom-4 right-4 group-hover:scale-110 transition-transform">
+                     <div className="bg-black/80 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-2xl text-center shadow-2xl flex flex-col items-center">
+                        <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.3em] mb-0.5">COMIENZA EN</span>
+                        <div className="text-xl font-black tabular-nums tracking-tighter text-red-500">
                            {countdowns[stream.id] || '00:00:00'}
                         </div>
                      </div>
