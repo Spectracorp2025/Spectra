@@ -186,17 +186,17 @@ export default function Announcements() {
                     <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-400 transition-colors uppercase tracking-tight">{ann.title}</h3>
                     <div className="relative">
                       <p className={cn(
-                        "text-white/80 text-sm leading-relaxed whitespace-pre-wrap transition-all duration-300",
+                        "text-white text-sm leading-relaxed whitespace-pre-wrap transition-all duration-300",
                         expandedId === ann.id ? "" : "line-clamp-3"
                       )}>
                         {ann.description}
                       </p>
-                      {ann.description.length > 200 && (
+                      {ann.description.length > 100 && (
                         <button 
                           onClick={() => setExpandedId(expandedId === ann.id ? null : ann.id)}
-                          className="text-indigo-400 text-[10px] font-black uppercase tracking-widest mt-2 hover:text-white transition-colors"
+                          className="text-indigo-400 text-xs font-black uppercase tracking-[0.2em] mt-3 hover:text-white transition-all bg-indigo-500/10 px-4 py-2 rounded-xl border border-indigo-500/20"
                         >
-                          {expandedId === ann.id ? 'VER MENOS' : 'VER MÁS'}
+                          {expandedId === ann.id ? 'VER MENOS' : 'VER TODO'}
                         </button>
                       )}
                     </div>

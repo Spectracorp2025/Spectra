@@ -119,14 +119,14 @@ export default function Reports() {
   return (
     <Layout title="Reportes y Sugerencias">
       <div className="max-w-4xl mx-auto space-y-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/5 border border-white/10 p-8 rounded-[2rem] backdrop-blur-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black/60 border border-white/20 p-8 rounded-[2rem] backdrop-blur-xl shadow-2xl">
           <div className="flex items-center gap-5">
             <div className="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-indigo-400 shadow-inner">
               <ClipboardList size={32} />
             </div>
             <div>
               <h2 className="text-2xl font-black tracking-tight uppercase">SOPORTE SPECTRA</h2>
-              <p className="text-white/60 font-medium tracking-wide">Reporta errores o envía sugerencias para mejorar.</p>
+              <p className="text-white/80 font-medium tracking-wide">Reporta errores o envía sugerencias para mejorar.</p>
             </div>
           </div>
           {!user?.is_admin && (

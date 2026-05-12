@@ -152,7 +152,7 @@ export default function Store() {
           </div>
         </header>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6" style={{ contentVisibility: 'auto' }}>
           {isLoading ? (
             Array(3).fill(0).map((_, i) => (
               <div key={i} className="bg-white/5 border border-white/5 rounded-[1.5rem] md:rounded-[2.5rem] h-64 md:h-96 animate-pulse" />
@@ -161,13 +161,12 @@ export default function Store() {
             filteredProducts.map((product) => (
               <motion.div 
                 key={product.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="group bg-white/5 backdrop-blur-md border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex flex-col relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="group bg-black/20 backdrop-blur-sm border border-white/10 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden flex flex-col relative will-change-transform transform-gpu"
               >
                 <div className="aspect-square w-full overflow-hidden relative">
-                   <img src={product.photo_url} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                   <img src={product.photo_url} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                    <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-black/60 backdrop-blur-md border border-white/10 px-2 md:px-4 py-1 rounded-full font-black text-[10px] md:text-sm text-indigo-400">
                      ${product.price_cop.toLocaleString('es-CO')}
                    </div>

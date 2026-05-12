@@ -171,17 +171,27 @@ export default function Transmissions() {
               <Smartphone size={32} />
             </div>
             <div>
-              <h3 className="text-xl font-bold uppercase tracking-tight">EXPERIENCIA MÓVIL RV</h3>
-              <p className="text-indigo-200/60 font-medium text-sm">Para disfrutar al máximo, descarga la aplicación RV para Android o iPhone.</p>
+              <h3 className="text-xl font-bold uppercase tracking-tight">EXPERIENCIA MÓVIL RAVE</h3>
+              <p className="text-indigo-200/60 font-medium text-sm">Para disfrutar al máximo y ver juntos, descarga la aplicación Rave para Android o iPhone.</p>
             </div>
           </div>
           <div className="flex gap-3 relative">
-            <button className="flex items-center gap-2 bg-white text-black py-2.5 px-5 rounded-xl font-black text-[10px] tracking-widest transition-all hover:scale-105 active:scale-95">
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.wemesh.android" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-white text-black py-2.5 px-5 rounded-xl font-black text-[10px] tracking-widest transition-all hover:scale-105 active:scale-95"
+            >
               <Smartphone size={16} /> ANDROID
-            </button>
-            <button className="flex items-center gap-2 bg-white/10 border border-white/5 text-white py-2.5 px-5 rounded-xl font-black text-[10px] tracking-widest transition-all hover:bg-white/20">
+            </a>
+            <a 
+              href="https://apps.apple.com/app/rave-watch-party/id1022216335" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-white/10 border border-white/5 text-white py-2.5 px-5 rounded-xl font-black text-[10px] tracking-widest transition-all hover:bg-white/20"
+            >
               <Apple size={16} /> IPHONE
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -358,10 +368,17 @@ export default function Transmissions() {
                          required 
                        />
                        <input 
-                         type="url" placeholder="Link de Transmisión" value={formData.stream_url} 
-                         onChange={e => setFormData({...formData, stream_url: e.target.value})}
+                         type="url" placeholder="Video URL (Opcional)" value={formData.video_url} 
+                         onChange={e => setFormData({...formData, video_url: e.target.value})}
                          className="bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
-                         required 
+                       />
+                    </div>
+                    <div>
+                       <label className="text-[10px] font-black text-white/40 uppercase mb-1 ml-1 block">LINK DE TRANSMISIÓN (SE PUEDE PONER DESPUÉS)</label>
+                       <input 
+                         type="url" placeholder="https://..." value={formData.stream_url} 
+                         onChange={e => setFormData({...formData, stream_url: e.target.value})}
+                         className="w-full bg-white/5 border border-white/10 rounded-2xl py-3.5 px-5 outline-none focus:border-red-500/50" 
                        />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
